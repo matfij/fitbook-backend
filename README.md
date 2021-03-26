@@ -6,3 +6,6 @@ Python Django Rest Framework Application
  - installing dependencies: `pip3 install -r requirements.txt`
 
 ## Docker
+ - build image: `docker build .`
+ - compose: `docker-compose build`
+ - run api: `docker-compose run api sh -c "[target command]"`
