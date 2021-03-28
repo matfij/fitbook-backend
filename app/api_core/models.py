@@ -23,6 +23,7 @@ class UserManager(BaseUserManager):
         '''Creates and saves a new administrator'''
         user = self.create_user(email, password)
         user.is_admin = True
+        user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
 
@@ -35,6 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
 
     objects = UserManager()
 
