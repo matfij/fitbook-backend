@@ -9,7 +9,7 @@ services:
     volumes:
       - ./app:/app
     command: >
-      sh -c "/wait-for-it.sh db &&
+      sh -c "python manage.py wait_for_db &&
              python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
     environment:
@@ -22,6 +22,7 @@ services:
 
   db:
     image: postgres:10-alpine
+    hostname: db
     environment:
       - POSTGRES_DB=app
       - POSTGRES_USER=user
