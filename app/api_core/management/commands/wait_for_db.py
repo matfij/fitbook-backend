@@ -13,8 +13,8 @@ class Command(BaseCommand):
         while not db_connection:
             try:
                 db_connection = connections['default']
-            except OperationalError():
-                self.stdout('Connecting...')
+            except OperationalError:
+                self.stdout.write('Connecting...')
                 time.sleep(1)
 
         self.stdout.write(self.style.SUCCESS('Connection estabilished'))

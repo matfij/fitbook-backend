@@ -126,4 +126,4 @@ STATIC_URL = '/static/'
 
 # User authentication
 
-AUTH_USER_MODEL = 'api_core.USer'
+AUTH_USER_MODEL = 'api_core.User'
