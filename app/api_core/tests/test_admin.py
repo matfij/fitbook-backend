@@ -9,7 +9,7 @@ class AdminTests(TestCase):
 
     def setUp(self):
         self.client = Client()
-        self.admin_user = get_user_model().objects.create_admin(
+        self.admin_user = get_user_model().objects.create_superuser(
             email='admin@mail.com',
             password='pass123'
         )

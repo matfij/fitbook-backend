@@ -22,15 +22,15 @@ class ModelTests(TestCase):
             email = None
             password = 'pass123'
             get_user_model().objects.create_user(
-                    email=email,
-                    password=password
-                )
+                email=email,
+                password=password
+            )
 
-    def test_admin_created(self):
+    def test_super_user_created(self):
         '''Happy path'''
         email = 'admin@example.com'
         password = 'pass123'
-        user = get_user_model().objects.create_admin(
+        user = get_user_model().objects.create_superuser(
             email=email,
             password=password
         )

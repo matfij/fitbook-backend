@@ -19,8 +19,8 @@ class UserManager(BaseUserManager):
 
         return user
 
-    def create_admin(self, email, password):
-        '''Creates and saves a new administrator'''
+    def create_superuser(self, email, password):
+        '''Creates and saves a new super user'''
         user = self.create_user(email, password)
         user.is_admin = True
         user.is_staff = True
