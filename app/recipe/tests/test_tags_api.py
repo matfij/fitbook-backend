@@ -48,10 +48,26 @@ class PrivateTagsApiTests(TestCase):
             email='other-user@example.com',
             password='other-pass123'
         )
-        other_tag = Tag.objects.create(user=other_user, name='Vegetarian')
+        Tag.objects.create(user=other_user, name='Vegetarian')
         tag = Tag.objects.create(user=self.user, name='Dinner')
         res = self.client.get(TAGS_URL)
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(len(res.data), 1)
         self.assertEqual(res.data[0]['name'], tag.name)
+
+    def test_create_tag_success(self):
+        payload = {'name': 'Fit'}
+        self.client.post(TAGS_URL, payload)
+        exists = Tag.objects.filter(
+            user=self.user,
+            name=payload['name']
+        ).exists()
+
+        self.assertTrue(exists)
+
+    def test_create_tag_invalid_name(self):
+        payload = {'name': ''}
+        res = self.client.post(TAGS_URL, payload)
+
+        self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
