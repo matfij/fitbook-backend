@@ -12,4 +12,4 @@ Python Django Rest Framework Application
  - run tests: `docker-compose run --rm api sh -c "python3 manage.py wait_for_db && python3 manage.py test && flake8"`
 
 ## Migrations
- - migrate: `docker-compose run api sh -c "python3 manage.py migrate [project_name]"`
+ - migrate: `docker-compose run api sh -c "python3 manage.py makemigrations api_core"`
