@@ -48,7 +48,7 @@ class ModelTests(TestCase):
         '''Test tag string representation'''
         tag = models.Tag.objects.create(
             user=sample_user(),
-            name="Alex"
+            name="Gluten free"
         )
 
         self.assertEqual(str(tag), tag.name)
